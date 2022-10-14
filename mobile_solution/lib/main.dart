@@ -1,67 +1,38 @@
 import 'package:flutter/material.dart';
 
+import 'Pages/home.dart';
+import 'dependecy_injection.dart';
+
 void main() {
+  Injector.configure(Flavor.mock);
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    const Map<int, Color> color = {
+      50: Color.fromRGBO(255, 182, 53, .1),
+      100: Color.fromRGBO(255, 182, 53, .2),
+      200: Color.fromRGBO(255, 182, 53, .3),
+      300: Color.fromRGBO(255, 182, 53, .4),
+      400: Color.fromRGBO(255, 182, 53, .5),
+      500: Color.fromRGBO(255, 182, 53, .6),
+      600: Color.fromRGBO(255, 182, 53, .7),
+      700: Color.fromRGBO(255, 182, 53, .8),
+      800: Color.fromRGBO(255, 182, 53, .9),
+      900: Color.fromRGBO(255, 182, 53, 1),
+    };
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+          primarySwatch: const MaterialColor(0xFFFFB635, color),
+          primaryColor: const Color.fromRGBO(255, 182, 53, 1),
+          backgroundColor: const Color.fromARGB(25, 255, 181, 53),
+          scaffoldBackgroundColor: const Color.fromARGB(25, 255, 181, 53)),
+      home: const HomePage(),
     );
   }
 }
