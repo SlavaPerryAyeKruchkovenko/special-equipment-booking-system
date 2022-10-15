@@ -1,8 +1,8 @@
 class User {
-  User(this.name, this.lastName, this.login, this.password);
-
+  User(this.id, this.name, this.lastName, this.middleName, this.stars);
+  String id;
   String name;
   String lastName;
-  String login;
-  String password;
+  String middleName;
+  double stars;
 }

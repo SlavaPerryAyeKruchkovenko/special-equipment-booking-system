@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_solution/api_manager/api_manager.dart';
 
 import '../Widgets/page_app_bar.dart';
 
@@ -13,6 +14,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String _login = "";
   bool _isVisible = false;
+  String _password = "";
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +58,14 @@ class _RegisterPageState extends State<RegisterPage> {
       return;
     }
     _formKey.currentState!.save();
-
-    Navigator.pop(context);
+    ApiManager.authEndpoint.loginUser(_login, _password).then((token) => {
+          if (token != null)
+            {
+              ApiManager.workerEndpoint.getWorker(token).then((user) => {
+                    if (user != null) {Navigator.pop(context, user)}
+                  })
+            }
+        });
   }
 
   Widget get _buildLogin {
@@ -105,7 +113,9 @@ class _RegisterPageState extends State<RegisterPage> {
         }
         return null;
       },
-      onSaved: (newValue) => {},
+      onSaved: (value) => {
+        if (value != null) {_password = value}
+      },
     );
   }
 }
