@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_solution/api_manager/api_manager.dart';
 
 import '../Widgets/page_app_bar.dart';
+import '../dependecy_injection.dart';
+import '../repository/user_repository.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -12,9 +13,16 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  late final UserRepository _repository;
   String _login = "";
   bool _isVisible = false;
   String _password = "";
+
+  @override
+  void initState() {
+    _repository = Injector.userRepository;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,10 +66,10 @@ class _RegisterPageState extends State<RegisterPage> {
       return;
     }
     _formKey.currentState!.save();
-    ApiManager.authEndpoint.loginUser(_login, _password).then((token) => {
+    _repository.fetchToken(_login, _password).then((token) => {
           if (token != null)
             {
-              ApiManager.workerEndpoint.getWorker(token).then((user) => {
+              _repository.fetchUser(token).then((user) => {
                     if (user != null) {Navigator.pop(context, user)}
                   })
             }
