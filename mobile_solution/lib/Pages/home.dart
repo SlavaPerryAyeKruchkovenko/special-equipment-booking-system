@@ -1,7 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../Widgets/home_menu.dart';
+import '../Widgets/page_app_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,25 +14,17 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _appBar,
+      backgroundColor: Colors.white,
+      appBar: PageAppBar(),
       body: _body,
       drawer: const HomeMenu(),
       extendBody: true,
     );
   }
 
-  PreferredSizeWidget get _appBar {
-    return AppBar(
-        title: Align(
-      alignment: Alignment.centerLeft,
-      child: Image.asset(
-        '${(kDebugMode && kIsWeb) ? "" : "assets/"}images/logo.png',
-        width: 180,
-      ),
-    ));
-  }
-
   Widget get _body {
-    return const Center();
+    return Container(
+      color: const Color.fromARGB(35, 255, 181, 53),
+    );
   }
 }

@@ -22,31 +22,33 @@ class _HomeMenuState extends State<HomeMenu> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+        backgroundColor: Colors.white,
         child: Container(
-      color: const Color.fromARGB(25, 255, 181, 53),
-      child: ListView(
-        children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(color: Color.fromRGBO(255, 182, 53, 1)),
-            child: Text("Привет 👋🏽 Тимур", style: _style),
+          color: const Color.fromARGB(35, 255, 182, 53),
+          child: ListView(
+            children: [
+              const DrawerHeader(
+                decoration:
+                    BoxDecoration(color: Color.fromARGB(255, 255, 182, 53)),
+                child: Text("Привет 👋🏽 Тимур", style: _style),
+              ),
+              const Divider(
+                height: 8,
+                thickness: 1,
+                color: Colors.black,
+              ),
+              ListTile(
+                leading: const Icon(
+                  Icons.account_box,
+                  color: Color.fromARGB(255, 255, 182, 53),
+                ),
+                title: const Text('Выход', style: _style),
+                onTap: () {
+                  setState(() async {});
+                },
+              ),
+            ],
           ),
-          const Divider(
-            height: 8,
-            thickness: 1,
-            color: Colors.black,
-          ),
-          ListTile(
-            leading: const Icon(
-              Icons.account_box,
-              color: Color.fromRGBO(255, 182, 53, 1),
-            ),
-            title: const Text('Выход', style: _style),
-            onTap: () {
-              setState(() async {});
-            },
-          ),
-        ],
-      ),
-    ));
+        ));
   }
 }
