@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_solution/Pages/registeration.dart';
+
+import '../models/user.dart';
 
 class HomeMenu extends StatefulWidget {
   const HomeMenu({Key? key}) : super(key: key);
@@ -14,9 +17,11 @@ const _style = TextStyle(
 );
 
 class _HomeMenuState extends State<HomeMenu> {
+  late User _user;
   @override
   void initState() {
     super.initState();
+    _user = User('1', 'timur', 'gay', 'gay', 5);
   }
 
   @override
@@ -27,10 +32,10 @@ class _HomeMenuState extends State<HomeMenu> {
           color: const Color.fromARGB(35, 255, 182, 53),
           child: ListView(
             children: [
-              const DrawerHeader(
-                decoration:
-                    BoxDecoration(color: Color.fromARGB(255, 255, 182, 53)),
-                child: Text("Привет 👋🏽 Тимур", style: _style),
+              DrawerHeader(
+                decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 255, 182, 53)),
+                child: Text("Привет 👋🏽 ${_user.name}", style: _style),
               ),
               const Divider(
                 height: 8,
@@ -44,7 +49,12 @@ class _HomeMenuState extends State<HomeMenu> {
                 ),
                 title: const Text('Выход', style: _style),
                 onTap: () {
-                  setState(() async {});
+                  setState(() async {
+                    _user = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RegisterPage()));
+                  });
                 },
               ),
             ],

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_solution/Pages/registeration.dart';
+import 'package:mobile_solution/Pages/home.dart';
 
 import 'dependecy_injection.dart';
 
 void main() {
-  Injector.configure(Flavor.mock);
+  Injector.configure(Flavor.prod);
   runApp(const MyApp());
 }
 
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: const MaterialColor(0xFFFFB635, color),
         primaryColor: const Color.fromARGB(255, 255, 182, 53),
       ),
-      home: const RegisterPage(),
+      home: const HomePage(),
     );
   }
 }

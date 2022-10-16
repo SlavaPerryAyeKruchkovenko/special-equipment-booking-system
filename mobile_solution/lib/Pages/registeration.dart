@@ -36,11 +36,11 @@ class _RegisterPageState extends State<RegisterPage> {
               child: Column(children: [
                 Center(
                     child: Padding(
-                        padding: const EdgeInsets.all(24.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: _buildLogin)),
                 Center(
                     child: Padding(
-                        padding: const EdgeInsets.all(24.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: _buildPassword)),
                 ElevatedButton(
                   onPressed: _submitForm,
@@ -50,10 +50,10 @@ class _RegisterPageState extends State<RegisterPage> {
                       backgroundColor: MaterialStateProperty.all<Color>(
                           const Color.fromARGB(255, 255, 181, 53))),
                   child: const Padding(
-                    padding: EdgeInsets.all(24.0),
+                    padding: EdgeInsets.all(10.0),
                     child: Text(
                       "Confirm",
-                      style: TextStyle(fontSize: 24),
+                      style: TextStyle(fontSize: 18),
                     ),
                   ),
                 )

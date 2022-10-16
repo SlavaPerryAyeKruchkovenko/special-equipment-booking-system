@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 import '../Widgets/home_menu.dart';
 import '../Widgets/page_app_bar.dart';
@@ -23,8 +24,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget get _body {
-    return Container(
-      color: const Color.fromARGB(35, 255, 181, 53),
-    );
+    return Expanded(
+        child: Container(
+      padding: const EdgeInsets.all(8),
+      child: const YandexMap(),
+    ));
   }
 }
